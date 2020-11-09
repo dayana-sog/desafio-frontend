@@ -1,21 +1,20 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import { Provider, Context } from './Context';
+import { Provider } from './Context';
 
-import Home from './pages/Home';
+import MainRoutes from './routes';
 
 import GlobalStyles from './styles/global';
 
-function App() {
-  const test = useContext(Context);
+import history from './history';
 
-  console.log(test);
+function App() {
 
   return (
     <Provider>
-      <Router>
-        <Home />
+      <Router history={history} >
+        <MainRoutes />
         <GlobalStyles />
       </Router>
     </Provider>

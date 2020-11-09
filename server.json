@@ -22,7 +22,7 @@
       "phone": "(21) 98987-7652",
       "status": "overdue",
       "subscription_amount": 750.99,
-      "profile_url": null
+      "profile_url": "https://randomuser.me/api/portraits/women/67.jpg"
     },
     {
       "name": "Eduardo Lopes",
@@ -54,7 +54,7 @@
       "phone": "(21) 98987-7656",
       "status": "overdue",
       "subscription_amount": 950.99,
-      "profile_url": "https://randomuser.me/api/portraits/men/86.jpg"
+      "profile_url": "https://randomuser.me/api/portraits/men/47.jpg"
     }
   ]
 }
