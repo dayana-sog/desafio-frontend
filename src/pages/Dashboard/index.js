@@ -1,21 +1,34 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { MdSearch } from 'react-icons/md';
 import { RiArrowDownSLine } from 'react-icons/ri';
 import { Outlet } from 'react-router-dom';
 import SideBar from '../../components/SideBar';
+// import Lottie from 'lottie-react-web';
 
+// import animation from '../../loading.json';
 import notification from '../../assets/notification.png';
 import user from '../../assets/avatar-admin.png';
+
+import { Context } from '../../Context';
 
 import {
   Container,
   WrapperDash,
   Header,
   HeaderInput,
-  User
+  User,
+  CustomerSearch
 } from './styles';
 
 function Home() {
+  const {
+    handleSearch,
+    customerSearch,
+    customers,
+    loading
+  } = useContext(Context);
+
+  console.log(loading);
 
   return (
     <Container>
@@ -28,7 +41,7 @@ function Home() {
             <input
               type="text"
               placeholder="Busque por clientes"
-              onChange={() => { }}
+              onChange={e => handleSearch(e.target.value)}
             />
           </HeaderInput>
 
@@ -40,7 +53,23 @@ function Home() {
           </User>
         </Header>
 
-        <Outlet />
+        {customerSearch.length === customers.length?
+          <Outlet />
+          :
+          customerSearch.map(search => (
+            <CustomerSearch key={search.name}>
+              <li>
+                <img src={search.profile_url} alt={search.name} />
+                <p>{search.name}</p>
+                <p>{search.email}</p>
+                <p>{search.phone}</p>
+                <span
+                  className={search.status === 'overdue' ? 'overdue' : 'paying'}
+                >{search.status === 'overdue' ? 'Inadimplente' : 'Adimplente'}</span>
+              </li>
+            </CustomerSearch>
+          ))}
+
       </WrapperDash>
     </Container>
   );

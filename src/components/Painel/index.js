@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import ScrollToBottom from 'react-scroll-to-bottom';
 
+import { formatPrice } from '../../util/fortmatPrice';
 import { Context } from '../../Context';
 
 import {
@@ -14,7 +15,8 @@ function Painel() {
     customersLength, 
     customers,
     statusOverdue,
-    statusPaying
+    statusPaying, 
+    total
   } = useContext( Context );
 
   return (
@@ -41,7 +43,7 @@ function Painel() {
 
             <li>
               <p>Total arrecadado</p>
-              <strong>R$ 2.856,98</strong>
+              <strong>{formatPrice(total)}</strong>
             </li>
           </ul>
         </div>
